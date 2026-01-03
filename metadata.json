@@ -1,0 +1,8 @@
+{
+  "name": "PropertyMind ExposeCheck",
+  "description": "Eine hochmoderne Plattform zur Analyse von Immobilienexposés mittels KI-Intelligenz, gestaltet in einem edlen Dark-Mode Glassmorphismus-Design.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

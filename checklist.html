@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkliste Objektunterlagen - ExposeCheck Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg-gray: #f1f5f9;
+            --border: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--primary);
+            line-height: 1.5;
+        }
+
+        /* Sticky UI Bar */
+        .ui-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center; gap: 20px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            border-color: var(--border);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-gray);
+        }
+
+        /* Paper Simulation */
+        .page-wrapper {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .paper {
+            background: white;
+            width: 800px;
+            min-height: 1130px; /* A4 Ratio */
+            padding: 60px 80px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Branding & Header */
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+            display: flex; align-items: center; justify-content: space-between; }
+
+        .brand-logo span { color: var(--accent); }
+        
+        .badge {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            padding: 4px 10px;
+            background: #eff6ff;
+            color: var(--accent);
+            border-radius: 4px;
+            border: 1px solid #dbeafe;
+        }
+
+        .main-header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .main-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .main-header p {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Checklist Styles */
+        .section {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 8px;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .checkbox-box {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            margin-right: 15px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .item-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .item-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: white;
+            }
+            .ui-header {
+                display: none;
+            }
+            .brand-logo { 
+                margin-bottom: 20px; 
+                font-size: 18px; 
+            }
+            .main-header { 
+                margin-bottom: 20px; 
+                padding-bottom: 10px; 
+                border-bottom: 2px solid black;
+            }
+            .main-header h1 { 
+                font-size: 24px; 
+            }
+            .page-wrapper {
+                padding: 0;
+            }
+            .paper {
+                width: 100%;
+                box-shadow: none;
+                padding: 0;
+                min-height: auto;
+            }
+            .checkbox-box {
+                border: 1px solid black;
+            }
+            .section-title {
+                color: black;
+                border-bottom: 1px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="ui-header">
+        <button class="btn btn-primary" onclick="window.print()">
+            <svg style="margin-right:8px" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            Drucken / als PDF speichern
+        </button>
+        <button class="btn btn-secondary" onclick="window.close()">Fenster schließen</button>
+    </header>
+
+    <div class="page-wrapper">
+        <article class="paper">
+            <div class="brand-logo">
+                <div>PropertyMind Expose<span>Check</span></div>
+                <div class="badge">Premium Service</div>
+            </div>
+
+            <header class="main-header">
+                <h1>Checkliste: Objektunterlagen</h1>
+                <p>Vollständige Dokumentation für Prüfung & Finanzierung</p>
+            </header>
+
+            <section class="section">
+                <h2 class="section-title">1. Basis-Unterlagen (Für alle Immobilien)</h2>
+                <ul class="checklist">
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Aktueller Grundbuchauszug <span class="item-note">(nicht älter als 3 Monate)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Amtliche Flurkarte / Lageplan</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Wohnflächenberechnung</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Aktueller Grundsteuerbescheid</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Energieausweis <span class="item-note">(Bedarfs- oder Verbrauchsausweis prüfen)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Baugenehmigungsunterlagen & Abnahmeschein</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Aktuelle Bauzeichnungen <span class="item-note">(Grundrisse, Schnitte, Ansichten 1:100)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Berechnung des Bruttorauminhalts <span class="item-note">(Kubatur)</span></div></li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">2. Sonderfall: Eigentumswohnung (Zusätzlich)</h2>
+                <ul class="checklist">
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Teilungserklärung & Gemeinschaftsordnung</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Protokolle der Eigentümerversammlungen <span class="item-note">(letzte 3 Jahre)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Hausgeldabrechnungen <span class="item-note">(letzte 3 Jahre)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Aktueller Wirtschaftsplan</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Nachweis der Instandhaltungsrücklage</div></li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">3. Sonderfall Vermietung</h2>
+                <ul class="checklist">
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Mietvertrag</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Nachträge zum Mietvertrag</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Unterlagen zur Mieterhöhung</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Nebenkostenabrechnungen</div></li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">4. Optional & Sicherheit</h2>
+                <ul class="checklist">
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Auszug aus dem Altlastenkataster</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Erschließungsbescheinigung</div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Nachweise über Modernisierungen <span class="item-note">(Rechnungen der Fachbetriebe)</span></div></li>
+                    <li class="checklist-item"><div class="checkbox-box"></div><div class="item-text">Versicherungspolicen <span class="item-note">(Gebäude- & Haftpflichtversicherung)</span></div></li>
+                </ul>
+            </section>
+
+            <div style="margin-top: 50px; border-top: 1px solid var(--border); padding-top: 15px; font-size: 10px; color: var(--text-muted); text-align: center;">
+                Diese Checkliste dient der allgemeinen Information. Alle Angaben ohne Gewähr. Erstellt durch ExposeCheck Premium Service.
+            </div>
+        </article>
+    </div>
+
+</body>
+</html>
